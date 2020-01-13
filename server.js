@@ -21,12 +21,14 @@ let smurfs = [
   }
 ];
 server.get('/smurfs', (req, res) => {
+  console.log('request was sent');
   res.json(smurfs);
 });
 let smurfId = smurfs.length;
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
+  console.log(req.body);
   const newSmurf = { name, age, height, id: smurfId };
   if (!name || !age || !height) {
     return sendUserError(
